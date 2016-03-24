@@ -13,10 +13,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
+    enum ShortcutType: String {
+        case Green = "Green"
+        case Red =   "Red"
+        case Blue = "Blue"
+        case Yellow = "Yellow"
+    }
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        return true
+        let launchFromShorCutItem = createDynamicShortcutsIfNeeded(application, launchOptions: launchOptions)
+        
+        return launchFromShorCutItem
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -41,6 +49,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    
+    func createDynamicShortcutsIfNeeded(application:UIApplication,launchOptions:[NSObject:AnyObject]?)->Bool{
+        var launchedFromShortCut = false
+        //Check for ShortCutItem
+        if let shortcutItem = launchOptions?[UIApplicationLaunchOptionsShortcutItemKey] as? UIApplicationShortcutItem {
+            launchedFromShortCut = true
+            handleShortCutItem(shortcutItem)
+        }
+        
+        
+        if application.shortcutItems?.count == 0{
+            let item1 = UIApplicationShortcutItem(type: ShortcutType.Red.rawValue, localizedTitle: "Red", localizedSubtitle: "Red Subtitle", icon: UIApplicationShortcutIcon(type:UIApplicationShortcutIconType.Compose), userInfo: nil)
+            let item2 = UIApplicationShortcutItem(type: ShortcutType.Green.rawValue, localizedTitle: "Green", localizedSubtitle: "Green Subtitle", icon: UIApplicationShortcutIcon(type:UIApplicationShortcutIconType.Play), userInfo: nil)
+            let item3 = UIApplicationShortcutItem(type: ShortcutType.Blue.rawValue, localizedTitle: "Blue", localizedSubtitle: "Blue Subtitle", icon: UIApplicationShortcutIcon(type:UIApplicationShortcutIconType.Search), userInfo: nil)
+            let item4 = UIApplicationShortcutItem(type: ShortcutType.Yellow.rawValue, localizedTitle: "Yellow", localizedSubtitle: "Yellow Subtitle", icon: UIApplicationShortcutIcon(templateImageName:"heartIcon"), userInfo: nil)
+            
+            application.shortcutItems = [item1,item2,item3,item4]
+        }
+        
+        // Return false incase application was lanched from shorcut to prevent
+        // application(_:performActionForShortcutItem:completionHandler:) from being called
+        return !launchedFromShortCut
+    }
 
+    func handleShortCutItem(item:UIApplicationShortcutItem){
+        let itemType = item.type
+        if let rootController = window?.rootViewController {
+            let vc = TestViewController(type: AppDelegate.ShortcutType(rawValue: itemType)!)
+            if rootController is UINavigationController{
+               (rootController as! UINavigationController).pushViewController(vc, animated: true)
+            }else{
+                rootController.navigationController?.pushViewController(vc, animated: true)
+            }
+        }
+    }
+    
+    func application(application: UIApplication, performActionForShortcutItem shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) {
+        handleShortCutItem(shortcutItem)
+        completionHandler(true)
+    }
 }
 

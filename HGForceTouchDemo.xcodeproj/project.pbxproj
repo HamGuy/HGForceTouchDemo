@@ -12,6 +12,7 @@
 		45D84C611CA38DB4006FA177 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45D84C5F1CA38DB4006FA177 /* Main.storyboard */; };
 		45D84C631CA38DB4006FA177 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45D84C621CA38DB4006FA177 /* Assets.xcassets */; };
 		45D84C661CA38DB4006FA177 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45D84C641CA38DB4006FA177 /* LaunchScreen.storyboard */; };
+		45D84C6E1CA39E5B006FA177 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D84C6D1CA39E5B006FA177 /* TestViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		45D84C621CA38DB4006FA177 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		45D84C651CA38DB4006FA177 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		45D84C671CA38DB4006FA177 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		45D84C6D1CA39E5B006FA177 /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestViewController.swift; path = ../TestViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				45D84C5B1CA38DB4006FA177 /* AppDelegate.swift */,
 				45D84C5D1CA38DB4006FA177 /* ViewController.swift */,
+				45D84C6D1CA39E5B006FA177 /* TestViewController.swift */,
 				45D84C5F1CA38DB4006FA177 /* Main.storyboard */,
 				45D84C621CA38DB4006FA177 /* Assets.xcassets */,
 				45D84C641CA38DB4006FA177 /* LaunchScreen.storyboard */,
@@ -136,6 +139,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				45D84C5E1CA38DB4006FA177 /* ViewController.swift in Sources */,
+				45D84C6E1CA39E5B006FA177 /* TestViewController.swift in Sources */,
 				45D84C5C1CA38DB4006FA177 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -199,7 +203,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -238,7 +242,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
